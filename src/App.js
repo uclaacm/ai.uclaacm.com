@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import { 
+  BrowserRouter as Router, 
+  Route, 
+  Routes, 
+} from 'react-router-dom';
+
+// Pages
+import Index from './pages/index';
+import Events from './pages/events';
+import Outreach from './pages/outreach';
+import Projects from './pages/projects';
+import Workshops from './pages/workshops';
+import Team from './pages/team';
+import Error from './pages/404';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <Routes>
+          <Route exact path="/" element={<Index />}/>
+          <Route exact path="/events" element={<Events />}/>
+          <Route exact path="/outreach" element={<Outreach />}/>
+          <Route exact path="/projects" element={<Projects />}/>
+          <Route exact path="/workshops" element={<Workshops />}/>
+          <Route exact path="/team" element={<Team />}/>
+          <Route path="*" element={<Error />}/>
+        </Routes>
+    </Router>
   );
 }
 
-export default App;
+export default App
