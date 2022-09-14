@@ -22,6 +22,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -31,14 +40,31 @@ const ddb = __importStar(require("../dynamo/wrappers"));
 const router = express_1.default.Router();
 // Set the region - probably not needed if passed down to route
 // AWS.config.update({region: 'us-west-1'});
-/* GET users listing. */
+/* GET all users. */
 router.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
-/* POST user details on db - aka create user */
+/* POST new user details on db - aka create user */
 router.post('/', function (req, res, next) {
-    const username = req.username;
-    // Call DynamoDB to add the item to the table
-    yield ddb.putItem(params);
-    module.exports = router;
+    return __awaiter(this, void 0, void 0, function* () {
+        console.log("inside post");
+        const username = req.body.username;
+        const password = req.body.password;
+        const favoriteDessert = req.body.favoriteDessert;
+        const newUser = {
+            username: username,
+            password: password,
+            favoriteDessert: favoriteDessert,
+        };
+        console.log(newUser);
+        console.log("calling putItem");
+        // Call DynamoDB to add the item to the table
+        try {
+            yield ddb.putItem(newUser);
+        }
+        catch (err) {
+            console.log("Error in putItem", err);
+        }
+    });
 });
+exports.default = router;
