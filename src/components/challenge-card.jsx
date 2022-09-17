@@ -12,7 +12,6 @@ function challengeCard({ index, question }) {
       textColor='#FFFFFF'
       paddingTop='10px'
       paddingLeft='15px'
-      marginLeft='200px'
     >
       <CloseButton
         size='sm'
