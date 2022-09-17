@@ -6,7 +6,6 @@ function eventCard({ title, datetime, location, blurb }) {
     <Box
       width='216px'
       height='141px'
-      border='1px solid #000000'
       borderRadius='10px'
       background='linear-gradient(180deg, #56B1F8 0%, #6EDAF0 100%)'
       textColor='#FFFFFF'
@@ -18,6 +17,7 @@ function eventCard({ title, datetime, location, blurb }) {
         fontSize='10px'
         border='1px solid #000000'
         borderRadius='15px'
+        textColor='#000000'
         marginLeft='170px'
         onClick={() => {
           console.log('Event closed')
