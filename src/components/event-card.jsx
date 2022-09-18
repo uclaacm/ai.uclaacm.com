@@ -40,10 +40,11 @@ function eventCard({ title, datetime, location, blurb }) {
         textColor='#000000'
         paddingTop='8px'
         paddingLeft='16px'
+        paddingRight='16px'
       >
-        <Heading fontSize='15px'>{datetime}</Heading>
-        <Heading fontSize='15px'>{location}</Heading>
-        <Heading fontSize='15px'>{blurb}</Heading>
+        <Heading fontSize='15px'>Date: {datetime}</Heading>
+        <Heading fontSize='15px'>Location: {location}</Heading>
+        <Heading fontSize='15px'>Description: {blurb}</Heading>
       </Box>
     </Box>
   )
